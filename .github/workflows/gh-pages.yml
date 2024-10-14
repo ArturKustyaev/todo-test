@@ -18,8 +18,16 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
       - name: Install dependencies
         run: npm install
+
+      - name: Setup tests
+        run: npm run test
 
       - name: Build the project
         run: npm run predeploy
